@@ -1,102 +1,86 @@
 <template>
-  <div class="tablet-container">
-    <div class="full-page bg-persona-tenue">
-      <div class="page-overlay"></div>
-      <div class="page-content">
-        <!-- Logo principal arriba -->
-        <div class="main-logo fade-in">
-          <img
-            src="/assets_base/3LogoClaromediaDataBar.png"
-            alt="Claro Media Data Bar Logo"
-            class="h-20 w-auto"
+  <div
+    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    style="background-image: url('/assets_base/4FondoPersonaTenue.png')"
+  >
+    <!-- Contenedor principal -->
+    <div
+      class="w-full h-full flex flex-col items-center justify-center px-8 py-16"
+    >
+      <!-- Logo en la parte superior -->
+      <div class="mb-12">
+        <img
+          src="/assets_base/3LogoClaromediaDataBar.png"
+          alt="Claro Media Data Bar Logo"
+          class="h-24 md:h-32 w-auto"
+        />
+      </div>
+
+      <!-- Formulario centrado -->
+      <div class="w-full max-w-md space-y-8">
+        <!-- Campo Nombre -->
+        <div>
+          <label class="block text-white text-xl font-medium mb-3 text-center">
+            Nombre
+          </label>
+          <input
+            type="text"
+            v-model="userData.name"
+            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            required
           />
         </div>
 
-        <!-- Formulario principal -->
-        <div class="content-card slide-up">
-          <h2 class="main-title text-3xl mb-2">Cuéntanos sobre ti</h2>
-          <p class="subtitle text-lg mb-8">
-            Necesitamos algunos datos para personalizar tu experiencia
-          </p>
-
-          <form @submit.prevent="submitForm" class="space-y-6">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="fade-in" style="animation-delay: 0.1s">
-                <label for="name" class="input-label">
-                  Nombre completo *
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  v-model="userData.name"
-                  class="input-tablet"
-                  required
-                  placeholder="Ingresa tu nombre completo"
-                />
-              </div>
-
-              <div class="fade-in" style="animation-delay: 0.2s">
-                <label for="cedula" class="input-label"> Cédula * </label>
-                <input
-                  type="text"
-                  id="cedula"
-                  v-model="userData.cedula"
-                  class="input-tablet"
-                  required
-                  placeholder="Número de cédula"
-                />
-              </div>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div class="fade-in" style="animation-delay: 0.3s">
-                <label for="phone" class="input-label"> Celular * </label>
-                <input
-                  type="tel"
-                  id="phone"
-                  v-model="userData.phone"
-                  class="input-tablet"
-                  required
-                  placeholder="Número de celular"
-                />
-              </div>
-
-              <div class="fade-in" style="animation-delay: 0.4s">
-                <label for="email" class="input-label">
-                  Correo electrónico *
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  v-model="userData.email"
-                  class="input-tablet"
-                  required
-                  placeholder="tu@email.com"
-                />
-              </div>
-            </div>
-
-            <div class="fade-in" style="animation-delay: 0.5s">
-              <button
-                type="submit"
-                class="btn-primary-tablet"
-                :disabled="!isFormValid"
-                :class="{ 'opacity-50 cursor-not-allowed': !isFormValid }"
-              >
-                Continuar al Quiz
-              </button>
-            </div>
-          </form>
+        <!-- Campo Cédula -->
+        <div>
+          <label class="block text-white text-xl font-medium mb-3 text-center">
+            Cédula
+          </label>
+          <input
+            type="text"
+            v-model="userData.cedula"
+            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            required
+          />
         </div>
 
-        <!-- Información de privacidad -->
-        <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center max-w-md"
-        >
-          <p class="text-xs opacity-80">
-            Tus datos están protegidos y solo se utilizarán para personalizar tu
-            experiencia en Data Bar
-          </p>
+        <!-- Campo Celular -->
+        <div>
+          <label class="block text-white text-xl font-medium mb-3 text-center">
+            Celular
+          </label>
+          <input
+            type="tel"
+            v-model="userData.phone"
+            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            required
+          />
+        </div>
+
+        <!-- Campo Correo -->
+        <div>
+          <label class="block text-white text-xl font-medium mb-3 text-center">
+            Correo
+          </label>
+          <input
+            type="email"
+            v-model="userData.email"
+            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            required
+          />
+        </div>
+
+        <!-- Botón Enviar -->
+        <div class="pt-8">
+          <button
+            @click="submitForm"
+            type="button"
+            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
+            :disabled="!isFormValid"
+            :class="{ 'opacity-50 cursor-not-allowed': !isFormValid }"
+          >
+            Enviar
+          </button>
         </div>
       </div>
     </div>
