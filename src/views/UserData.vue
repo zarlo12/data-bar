@@ -12,7 +12,7 @@
         <img
           src="/assets_base/3LogoClaromediaDataBar.png"
           alt="Claro Media Data Bar Logo"
-          class="h-24 md:h-32 w-auto"
+          class="h-32 md:h-40 lg:h-48 w-auto"
         />
       </div>
 
