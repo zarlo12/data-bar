@@ -9,7 +9,7 @@ const firebaseConfig = {
   projectId: "imagen-ia-845a3",
   storageBucket: "imagen-ia-845a3.firebasestorage.app",
   messagingSenderId: "134868092813",
-  appId: "1:134868092813:web:d67cbcb860ecdfcaa25fc4"
+  appId: "1:134868092813:web:d67cbcb860ecdfcaa25fc4",
 };
 
 // Initialize Firebase

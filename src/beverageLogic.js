@@ -1,99 +1,249 @@
 // Datos para el cálculo de bebidas basado en las respuestas
 export const beverageScoring = {
   Q1: {
-    a: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    b: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    c: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 1 },
-    d: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 1 },
-    e: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 }
+    a: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    b: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    c: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 1,
+    },
+    d: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 1,
+    },
+    e: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
   },
   Q2: {
-    a: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    b: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 0 },
-    c: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    d: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 1 },
-    e: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 }
+    a: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    b: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    c: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    d: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 1,
+    },
+    e: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
   },
   Q3: {
-    a: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 1 },
-    b: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    c: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    d: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 1 },
-    e: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 }
+    a: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 1,
+    },
+    b: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    c: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    d: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 1,
+    },
+    e: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
   },
   Q4: {
-    a: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 0 },
-    b: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 },
-    c: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 0 },
-    d: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 0, "Data Brew": 0, "Planters Punch": 0 },
-    e: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 }
+    a: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    b: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    c: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    d: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 0,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+    e: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
   },
   Q5: {
-    a: { "Affinity Spritz": 0, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 1 },
-    b: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 },
-    c: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 },
-    d: { "Affinity Spritz": 0, "Conversion Mule": 1, "Engagement Tonic": 0, "Data Brew": 1, "Planters Punch": 0 },
-    e: { "Affinity Spritz": 1, "Conversion Mule": 0, "Engagement Tonic": 1, "Data Brew": 0, "Planters Punch": 0 }
-  }
+    a: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 1,
+    },
+    b: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
+    c: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
+    d: {
+      "Affinity Spritz": 0,
+      "Conversion Mule": 1,
+      "Engagement Tonic": 0,
+      "Data Brew": 1,
+      "Planters Punch": 0,
+    },
+    e: {
+      "Affinity Spritz": 1,
+      "Conversion Mule": 0,
+      "Engagement Tonic": 1,
+      "Data Brew": 0,
+      "Planters Punch": 0,
+    },
+  },
 };
 
 // Preguntas del quiz
 export const questions = [
   {
-    id: 'Q1',
-    text: '¿Cuál es tu sabor favorito?',
+    id: "Q1",
+    text: "¿Cuál es tu sabor favorito?",
     options: [
-      { id: 'a', text: 'Dulce y vibrante 🍓' },
-      { id: 'b', text: 'Refrescante y ligero 🍋' },
-      { id: 'c', text: 'Intenso y fuerte 🍸' },
-      { id: 'd', text: 'Exótico y diferente 🌺' },
-      { id: 'e', text: 'Fresco y artesanal 🍺' }
-    ]
+      { id: "a", text: "Dulce y vibrante 🍓" },
+      { id: "b", text: "Refrescante y ligero 🍋" },
+      { id: "c", text: "Intenso y fuerte 🍸" },
+      { id: "d", text: "Exótico y diferente 🌺" },
+      { id: "e", text: "Fresco y artesanal 🍺" },
+    ],
   },
   {
-    id: 'Q2',
-    text: '¿Qué prefieres hacer en tu tiempo libre?',
+    id: "Q2",
+    text: "¿Qué prefieres hacer en tu tiempo libre?",
     options: [
-      { id: 'a', text: 'Bailar y disfrutar de la música 🎶' },
-      { id: 'b', text: 'Relajarme bajo el sol ☀️' },
-      { id: 'c', text: 'Jugar y hacer deporte ⚽' },
-      { id: 'd', text: 'Explorar y descubrir nuevas experiencias 🌊' },
-      { id: 'e', text: 'Brindar con una buena cerveza 🍻' }
-    ]
+      { id: "a", text: "Bailar y disfrutar de la música 🎶" },
+      { id: "b", text: "Relajarme bajo el sol ☀️" },
+      { id: "c", text: "Jugar y hacer deporte ⚽" },
+      { id: "d", text: "Explorar y descubrir nuevas experiencias 🌊" },
+      { id: "e", text: "Brindar con una buena cerveza 🍻" },
+    ],
   },
   {
-    id: 'Q3',
-    text: '¿Qué valoras más en una marca?',
+    id: "Q3",
+    text: "¿Qué valoras más en una marca?",
     options: [
-      { id: 'a', text: 'Innovación y tecnología 🤖' },
-      { id: 'b', text: 'Cercanía y conexión humana 🤝' },
-      { id: 'c', text: 'Diversión y entretenimiento 🎉' },
-      { id: 'd', text: 'Impacto positivo y sostenibilidad 🌱' },
-      { id: 'e', text: 'Autenticidad y sabor real 🍺' }
-    ]
+      { id: "a", text: "Innovación y tecnología 🤖" },
+      { id: "b", text: "Cercanía y conexión humana 🤝" },
+      { id: "c", text: "Diversión y entretenimiento 🎉" },
+      { id: "d", text: "Impacto positivo y sostenibilidad 🌱" },
+      { id: "e", text: "Autenticidad y sabor real 🍺" },
+    ],
   },
   {
-    id: 'Q4',
-    text: '¿Cuál es tu objetivo principal en redes sociales?',
+    id: "Q4",
+    text: "¿Cuál es tu objetivo principal en redes sociales?",
     options: [
-      { id: 'a', text: 'Alcanzar a muchas personas (Reach) 🌍' },
-      { id: 'b', text: 'Generar interacción y conversación (Engagement) 💬' },
-      { id: 'c', text: 'Lograr conversiones y ventas (Conversion) 💳' },
-      { id: 'd', text: 'Construir recordación de marca (Awareness) ⭐' },
-      { id: 'e', text: 'Generar conexión emocional auténtica 🍻' }
-    ]
+      { id: "a", text: "Alcanzar a muchas personas (Reach) 🌍" },
+      { id: "b", text: "Generar interacción y conversación (Engagement) 💬" },
+      { id: "c", text: "Lograr conversiones y ventas (Conversion) 💳" },
+      { id: "d", text: "Construir recordación de marca (Awareness) ⭐" },
+      { id: "e", text: "Generar conexión emocional auténtica 🍻" },
+    ],
   },
   {
-    id: 'Q5',
-    text: '¿Qué herramienta es más importante para ti?',
+    id: "Q5",
+    text: "¿Qué herramienta es más importante para ti?",
     options: [
-      { id: 'a', text: 'Creatividad 🎨' },
-      { id: 'b', text: 'Precisión 🎯' },
-      { id: 'c', text: 'Datos 📊' },
-      { id: 'd', text: 'Tecnología 🧠' },
-      { id: 'e', text: 'Un toque refrescante 🍹' }
-    ]
-  }
+      { id: "a", text: "Creatividad 🎨" },
+      { id: "b", text: "Precisión 🎯" },
+      { id: "c", text: "Datos 📊" },
+      { id: "d", text: "Tecnología 🧠" },
+      { id: "e", text: "Un toque refrescante 🍹" },
+    ],
+  },
 ];
 
 // Información de las bebidas
@@ -101,28 +251,33 @@ export const beverages = {
   "Affinity Spritz": {
     name: "Affinity Spritz",
     image: "/assets_base/7 Affinity Spritz.png",
-    description: "Una bebida refrescante y vibrante que conecta perfectamente con tu audiencia objetivo."
+    description:
+      "Una bebida refrescante y vibrante que conecta perfectamente con tu audiencia objetivo.",
   },
   "Conversion Mule": {
     name: "Conversion Mule",
     image: "/assets_base/6 Conversion Mule.png",
-    description: "La bebida perfecta para aquellos que buscan resultados concretos y conversiones efectivas."
+    description:
+      "La bebida perfecta para aquellos que buscan resultados concretos y conversiones efectivas.",
   },
   "Engagement Tonic": {
     name: "Engagement Tonic",
     image: "/assets_base/8 Engagement Tonic.png",
-    description: "Una mezcla energizante que genera la interacción y conexión que buscas."
+    description:
+      "Una mezcla energizante que genera la interacción y conexión que buscas.",
   },
   "Data Brew": {
     name: "Data Brew",
     image: "/assets_base/10 Data Brew.png",
-    description: "La bebida artesanal para los amantes de los datos y la precisión."
+    description:
+      "La bebida artesanal para los amantes de los datos y la precisión.",
   },
   "Planters Punch": {
     name: "Planters Punch",
     image: "/assets_base/9 Planters Punch.png",
-    description: "Una bebida exótica y diferente para los que buscan experiencias únicas."
-  }
+    description:
+      "Una bebida exótica y diferente para los que buscan experiencias únicas.",
+  },
 };
 
 // Función para calcular la bebida ganadora
@@ -132,15 +287,15 @@ export function calculateBeverage(answers) {
     "Conversion Mule": 0,
     "Engagement Tonic": 0,
     "Data Brew": 0,
-    "Planters Punch": 0
+    "Planters Punch": 0,
   };
 
   // Calcular puntuaciones basadas en las respuestas
-  Object.keys(answers).forEach(questionId => {
+  Object.keys(answers).forEach((questionId) => {
     const answer = answers[questionId];
     const questionScores = beverageScoring[questionId][answer];
-    
-    Object.keys(questionScores).forEach(beverage => {
+
+    Object.keys(questionScores).forEach((beverage) => {
       scores[beverage] += questionScores[beverage];
     });
   });
@@ -148,8 +303,8 @@ export function calculateBeverage(answers) {
   // Encontrar la bebida con mayor puntuación
   let maxScore = 0;
   let winningBeverage = "";
-  
-  Object.keys(scores).forEach(beverage => {
+
+  Object.keys(scores).forEach((beverage) => {
     if (scores[beverage] > maxScore) {
       maxScore = scores[beverage];
       winningBeverage = beverage;
@@ -159,6 +314,6 @@ export function calculateBeverage(answers) {
   return {
     beverage: winningBeverage,
     score: maxScore,
-    allScores: scores
+    allScores: scores,
   };
 }
