@@ -252,31 +252,31 @@ export const beverages = {
     name: "Affinity Spritz",
     image: "/assets_base/7 Affinity Spritz.png",
     description:
-      "Una bebida refrescante y vibrante que conecta perfectamente con tu audiencia objetivo.",
+      "Notas ácidas y directas, creadas para segmentar y llegar justo al público indicado.",
   },
   "Conversion Mule": {
     name: "Conversion Mule",
     image: "/assets_base/6 Conversion Mule.png",
     description:
-      "La bebida perfecta para aquellos que buscan resultados concretos y conversiones efectivas.",
+      "Una mezcla potente que transforma cada interacción en resultados medibles.",
   },
   "Engagement Tonic": {
     name: "Engagement Tonic",
     image: "/assets_base/8 Engagement Tonic.png",
     description:
-      "Una mezcla energizante que genera la interacción y conexión que buscas.",
+      "Burbujeante y constante, diseñado para mantener viva la conversación con tus audiencias.",
   },
   "Data Brew": {
     name: "Data Brew",
     image: "/assets_base/10 Data Brew.png",
     description:
-      "La bebida artesanal para los amantes de los datos y la precisión.",
+      "Cerveza artesanal que mezcla precisión y frescura. Fría como los datos, potente como los resultados.",
   },
   "Planters Punch": {
     name: "Planters Punch",
     image: "/assets_base/9 Planters Punch.png",
     description:
-      "Una bebida exótica y diferente para los que buscan experiencias únicas.",
+      "Un golpe de sabor futurista que anticipa las tendencias y prepara la mezcla ideal.",
   },
 };
 
