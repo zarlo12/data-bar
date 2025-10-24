@@ -1,48 +1,38 @@
 <template>
-  <div class="tablet-container">
-    <div class="full-page bg-persona">
-      <div class="page-overlay"></div>
-      <div class="page-content">
-        <!-- Logo principal arriba -->
-        <div class="main-logo fade-in">
+  <div
+    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    style="background-image: url('/assets_base/4FondoPersona.png')"
+  >
+    <!-- Contenedor principal centrado -->
+    <div class="w-full h-full flex flex-col items-center justify-center px-8">
+      <!-- Grupo de elementos centrados -->
+      <div class="flex flex-col items-center space-y-8">
+        <!-- Logo Claro Media -->
+        <div>
           <img
             src="/assets_base/1LogoClaroMedia.png"
             alt="Claro Media Logo"
-            class="h-24 w-auto mb-6"
+            class="h-24 md:h-32 w-auto"
           />
         </div>
 
-        <!-- Contenido principal -->
-        <div class="content-card slide-up">
-          <div class="text-center">
-            <h1 class="main-title">¡Bienvenido a Data Bar!</h1>
-            <p class="subtitle">
-              Descubre qué bebida representa mejor tu perfil profesional a
-              través de nuestro quiz personalizado
-            </p>
-
-            <!-- Logo Data Bar en el centro -->
-            <div class="mb-8">
-              <img
-                src="/assets_base/2LogoDataBarServimosresultadosefectivos.png"
-                alt="Data Bar - Servimos resultados efectivos"
-                class="h-16 w-auto mx-auto"
-              />
-            </div>
-
-            <button @click="startQuiz" class="btn-primary-tablet">
-              Comenzar Quiz
-            </button>
-          </div>
+        <!-- Logo Data Bar -->
+        <div>
+          <img
+            src="/assets_base/2LogoDataBarServimosresultadosefectivos.png"
+            alt="Data Bar - Servimos resultados efectivos"
+            class="h-48 md:h-56 lg:h-64 w-auto"
+          />
         </div>
 
-        <!-- Footer con información adicional -->
-        <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center"
-        >
-          <p class="text-sm opacity-80">
-            Una experiencia personalizada de Data Bar
-          </p>
+        <!-- Botón Comenzar -->
+        <div class="mt-4">
+          <button
+            @click="startQuiz"
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+          >
+            Comenzar
+          </button>
         </div>
       </div>
     </div>
