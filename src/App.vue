@@ -28,7 +28,7 @@
 export default {
   name: 'App',
   mounted() {
-    // Precargar imágenes críticasfdsf
+    // Precargar imágenes críticasfdsfds
     this.preloadImages()
   },
   methods: {
