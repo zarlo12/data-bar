@@ -1,92 +1,59 @@
 <template>
-  <div class="tablet-container">
-    <div class="full-page bg-persona-tenue">
-      <div class="page-overlay"></div>
-      <div class="page-content">
-        <!-- Logo principal arriba -->
-        <div class="main-logo fade-in">
-          <img
-            src="/assets_base/3LogoClaromediaDataBar.png"
-            alt="Claro Media Data Bar Logo"
-            class="h-20 w-auto"
-          />
-        </div>
+  <div
+    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    style="background-image: url('/assets_base/4FondoPersonaTenue.png')"
+  >
+    <!-- Contenedor principal -->
+    <div
+      class="w-full h-full flex flex-col items-center justify-center px-8 py-16"
+      v-if="currentQuestion"
+    >
+      <!-- Logo en la parte superior -->
+      <div class="mb-12">
+        <img
+          src="/assets_base/3LogoClaromediaDataBar.png"
+          alt="Claro Media Data Bar Logo"
+          class="h-32 md:h-40 lg:h-48 w-auto"
+        />
+      </div>
 
-        <!-- Contenido de la pregunta -->
-        <div class="content-card slide-up max-w-4xl" v-if="currentQuestion">
-          <!-- Encabezado de pregunta -->
-          <div class="text-center mb-8">
-            <div
-              class="inline-flex items-center bg-red-100 text-red-800 px-4 py-2 rounded-full text-sm font-semibold mb-4"
-            >
-              Pregunta {{ questionNumber }} de {{ totalQuestions }}
-            </div>
-            <h2 class="main-title text-3xl">
-              {{ currentQuestion.text }}
-            </h2>
-          </div>
-
-          <!-- Barra de progreso -->
-          <div class="progress-bar fade-in">
-            <div class="progress-fill" :style="`width: ${progress}%`"></div>
-          </div>
-
-          <!-- Opciones de respuesta -->
-          <div class="space-y-4 mb-8">
-            <button
-              v-for="(option, index) in currentQuestion.options"
-              :key="option.id"
-              @click="selectOption(option.id)"
-              :class="[
-                'question-option-tablet fade-in',
-                selectedOption === option.id ? 'selected' : ''
-              ]"
-              :style="`animation-delay: ${0.1 + index * 0.1}s`"
-            >
-              <div class="flex items-center">
-                <div
-                  class="w-6 h-6 rounded-full border-2 border-current mr-4 flex-shrink-0 flex items-center justify-center"
-                >
-                  <div
-                    v-if="selectedOption === option.id"
-                    class="w-3 h-3 bg-current rounded-full"
-                  ></div>
-                </div>
-                <span>{{ option.text }}</span>
-              </div>
-            </button>
-          </div>
-
-          <!-- Botones de navegación -->
-          <div class="nav-buttons">
-            <button
-              @click="goBack"
-              v-if="questionNumber > 1"
-              class="btn-secondary-tablet w-32"
-            >
-              ← Anterior
-            </button>
-            <div v-else></div>
-
-            <button
-              @click="nextQuestion"
-              :disabled="!selectedOption"
-              class="btn-primary-tablet w-48"
-              :class="{ 'opacity-50 cursor-not-allowed': !selectedOption }"
-            >
-              {{ isLastQuestion ? 'Ver Resultado →' : 'Siguiente →' }}
-            </button>
-          </div>
-        </div>
-
-        <!-- Indicador de progreso textual -->
-        <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white text-center"
+      <!-- Pregunta centrada -->
+      <div class="text-center mb-12">
+        <h2
+          class="text-white text-2xl md:text-3xl font-bold leading-tight max-w-2xl"
         >
-          <p class="text-sm opacity-80">
-            {{ Math.round(progress) }}% completado
-          </p>
-        </div>
+          {{ currentQuestion.text }}
+        </h2>
+      </div>
+
+      <!-- Opciones de respuesta -->
+      <div class="w-full max-w-2xl space-y-4 mb-12">
+        <button
+          v-for="option in currentQuestion.options"
+          :key="option.id"
+          @click="selectOption(option.id)"
+          :class="[
+            'w-full px-6 py-4 bg-black bg-opacity-40 rounded-lg text-white text-left text-lg hover:bg-opacity-60 transition-all duration-300',
+            selectedOption === option.id 
+              ? 'border-4 border-red-400 bg-red-600 bg-opacity-20 shadow-lg shadow-red-500/50' 
+              : 'border-2 border-red-600'
+          ]"
+        >
+          <span class="text-red-400 font-bold mr-3">{{ option.id }})</span>
+          <span>{{ option.text }}</span>
+        </button>
+      </div>
+
+      <!-- Botón Siguiente -->
+      <div>
+        <button
+          @click="nextQuestion"
+          :disabled="!selectedOption"
+          class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
+          :class="{ 'opacity-50 cursor-not-allowed': !selectedOption }"
+        >
+          Siguiente
+        </button>
       </div>
     </div>
   </div>

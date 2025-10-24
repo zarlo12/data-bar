@@ -191,7 +191,7 @@ export const beverageScoring = {
 export const questions = [
   {
     id: "Q1",
-    text: "¿Cuál es tu sabor favorito?",
+    text: "¿Qué sabor define mejor tu estilo?",
     options: [
       { id: "a", text: "Dulce y vibrante 🍓" },
       { id: "b", text: "Refrescante y ligero 🍋" },
@@ -202,7 +202,7 @@ export const questions = [
   },
   {
     id: "Q2",
-    text: "¿Qué prefieres hacer en tu tiempo libre?",
+    text: "¿Cuál es tu plan favorito en la playa?",
     options: [
       { id: "a", text: "Bailar y disfrutar de la música 🎶" },
       { id: "b", text: "Relajarme bajo el sol ☀️" },
@@ -213,7 +213,7 @@ export const questions = [
   },
   {
     id: "Q3",
-    text: "¿Qué valoras más en una marca?",
+    text: "¿Qué valor te inspira más en una marca?",
     options: [
       { id: "a", text: "Innovación y tecnología 🤖" },
       { id: "b", text: "Cercanía y conexión humana 🤝" },
@@ -224,7 +224,7 @@ export const questions = [
   },
   {
     id: "Q4",
-    text: "¿Cuál es tu objetivo principal en redes sociales?",
+    text: "¿Qué resultado buscas en tu campaña ideal?",
     options: [
       { id: "a", text: "Alcanzar a muchas personas (Reach) 🌍" },
       { id: "b", text: "Generar interacción y conversación (Engagement) 💬" },
@@ -235,7 +235,7 @@ export const questions = [
   },
   {
     id: "Q5",
-    text: "¿Qué herramienta es más importante para ti?",
+    text: "¿Qué ingrediente no puede faltar en tu mezcla ideal?",
     options: [
       { id: "a", text: "Creatividad 🎨" },
       { id: "b", text: "Precisión 🎯" },
