@@ -3,6 +3,17 @@
     class="w-full h-screen relative overflow-hidden bg-black bg-cover bg-center transition-all duration-500 ease-in-out"
     :style="backgroundStyle"
   >
+    <!-- Botón oculto para Bartender (esquina superior izquierda) -->
+    <div class="absolute top-4 left-4">
+      <button
+        @dblclick="goToBartender"
+        class="w-12 h-12 bg-transparent border-2 border-transparent hover:border-red-600 rounded-lg transition-all duration-300 opacity-10 hover:opacity-100"
+        title="Doble clic para Panel del Bartender"
+      >
+        🍹
+      </button>
+    </div>
+
     <!-- Contenedor principal centrado -->
     <div class="w-full h-full flex flex-col items-center justify-center px-8">
       <!-- Grupo de elementos centrados -->
@@ -66,6 +77,10 @@ export default {
     },
     onImageLoad() {
       this.imagesLoaded++
+    },
+    goToBartender() {
+      // Acceso al panel del bartender con doble clic
+      this.$router.push('/bartender')
     }
   }
 }

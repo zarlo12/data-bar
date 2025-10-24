@@ -4,6 +4,7 @@ import UserData from "../views/UserData.vue";
 import Question from "../views/Question.vue";
 import Result from "../views/Result.vue";
 import Thanks from "../views/Thanks.vue";
+import Bartender from "../views/Bartender.vue";
 
 const routes = [
   {
@@ -35,6 +36,12 @@ const routes = [
     path: "/gracias",
     name: "Thanks",
     component: Thanks,
+    meta: { transition: "slide-left" },
+  },
+  {
+    path: "/bartender",
+    name: "Bartender",
+    component: Bartender,
     meta: { transition: "slide-left" },
   },
 ];
