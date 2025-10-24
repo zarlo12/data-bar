@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@layer base {
+  body {
+    @apply font-inter bg-gray-50;
+    margin: 0;
+    padding: 0;
+  }
+  
+  * {
+    box-sizing: border-box;
+  }
+}
+
+@layer components {
+  /* Contenedor principal para tablet */
+  .tablet-container {
+    @apply w-full max-w-screen-xl mx-auto min-h-screen relative;
+    padding: 0;
+  }
+  
+  /* Página completa con fondo */
+  .full-page {
+    @apply w-full h-screen relative overflow-hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  /* Overlay para mejorar legibilidad */
+  .page-overlay {
+    @apply absolute inset-0 bg-black bg-opacity-20;
+  }
+  
+  /* Contenido principal centrado */
+  .page-content {
+    @apply relative z-10 h-full flex flex-col items-center justify-center px-8 py-12;
+  }
+  
+  /* Logo principal en la parte superior */
+  .main-logo {
+    @apply mb-8;
+  }
+  
+  .main-logo img {
+    @apply h-20 w-auto;
+  }
+  
+  /* Contenedor de contenido blanco */
+  .content-card {
+    @apply bg-white rounded-3xl shadow-2xl p-12 max-w-2xl w-full;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  /* Títulos principales */
+  .main-title {
+    @apply text-4xl font-black text-gray-900 text-center mb-4;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: -0.025em;
+  }
+  
+  .subtitle {
+    @apply text-xl font-medium text-gray-600 text-center mb-8;
+    line-height: 1.4;
+  }
+  
+  /* Botones estilo tablet */
+  .btn-tablet {
+    @apply w-full py-6 px-8 rounded-2xl font-bold text-lg transition-all duration-300 transform;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  }
+  
+  .btn-tablet:hover {
+    @apply scale-105;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+  }
+  
+  .btn-primary-tablet {
+    @apply btn-tablet bg-gradient-to-r from-red-600 to-red-700 text-white;
+  }
+  
+  .btn-primary-tablet:hover {
+    @apply from-red-700 to-red-800;
+  }
+  
+  .btn-secondary-tablet {
+    @apply btn-tablet bg-white text-gray-800 border-2 border-gray-300;
+  }
+  
+  .btn-secondary-tablet:hover {
+    @apply border-gray-400 bg-gray-50;
+  }
+  
+  /* Campos de entrada para tablet */
+  .input-tablet {
+    @apply w-full px-6 py-5 text-lg border-2 border-gray-300 rounded-xl focus:outline-none focus:border-red-500 focus:ring-2 focus:ring-red-200 transition-all duration-300;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .input-label {
+    @apply block text-base font-semibold text-gray-700 mb-3;
+  }
+  
+  /* Opciones de preguntas */
+  .question-option-tablet {
+    @apply w-full p-6 mb-4 text-left text-lg font-medium border-2 border-gray-200 rounded-2xl transition-all duration-300 cursor-pointer;
+    background: rgba(255, 255, 255, 0.9);
+  }
+  
+  .question-option-tablet:hover {
+    @apply border-red-300 bg-red-50 transform scale-102;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+  
+  .question-option-tablet.selected {
+    @apply border-red-500 bg-red-50;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+  }
+  
+  /* Barra de progreso */
+  .progress-bar {
+    @apply w-full h-3 bg-gray-200 rounded-full overflow-hidden mb-8;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-red-500 to-red-600 rounded-full transition-all duration-500;
+  }
+  
+  /* Navegación */
+  .nav-buttons {
+    @apply flex justify-between items-center w-full mt-8;
+  }
+  
+  /* Estilos para resultado */
+  .result-card {
+    @apply bg-white rounded-3xl shadow-2xl p-12 max-w-3xl w-full text-center;
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
+  }
+  
+  .beverage-image {
+    @apply w-80 h-80 object-contain mx-auto mb-8 rounded-2xl;
+  }
+  
+  .beverage-title {
+    @apply text-5xl font-black text-gray-900 mb-4;
+    background: linear-gradient(135deg, #dc2626, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .beverage-description {
+    @apply text-xl text-gray-600 leading-relaxed mb-8;
+  }
+  
+  /* Animaciones */
+  .fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  @keyframes slideUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
