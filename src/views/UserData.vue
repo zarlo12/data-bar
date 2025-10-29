@@ -70,6 +70,33 @@
           />
         </div>
 
+        <!-- Campo NIT -->
+        <div>
+          <label class="block text-white text-xl font-medium mb-3 text-center">
+            NIT
+          </label>
+          <input
+            type="text"
+            v-model="userData.nit"
+            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            required
+          />
+        </div>
+
+        <!-- Checkbox Habeas Data -->
+        <div class="flex items-start space-x-3">
+          <input
+            type="checkbox"
+            id="habeasData"
+            v-model="userData.acceptTerms"
+            class="mt-1 w-5 h-5 text-red-600 bg-transparent border-2 border-red-600 rounded focus:ring-red-500 focus:ring-2"
+            required
+          />
+          <label for="habeasData" class="text-white text-lg leading-relaxed cursor-pointer">
+            Acepto HABEAS DATA y tratamiento de datos personales.
+          </label>
+        </div>
+
         <!-- Botón Enviar -->
         <div class="pt-8">
           <button
@@ -96,7 +123,9 @@ export default {
         name: '',
         cedula: '',
         phone: '',
-        email: ''
+        email: '',
+        nit: '',
+        acceptTerms: false
       }
     }
   },
@@ -105,7 +134,9 @@ export default {
       return this.userData.name &&
              this.userData.cedula &&
              this.userData.phone &&
-             this.userData.email
+             this.userData.email &&
+             this.userData.nit &&
+             this.userData.acceptTerms
     }
   },
   methods: {
