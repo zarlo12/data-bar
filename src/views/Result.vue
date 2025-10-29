@@ -17,13 +17,6 @@
         />
       </div>
 
-      <!-- Nombre de la bebida -->
-      <div class="text-center mb-8">
-        <h1 class="text-white text-4xl md:text-5xl font-bold">
-          {{ result.beverage.name }}
-        </h1>
-      </div>
-
       <!-- Imagen de la bebida -->
       <div class="mb-8">
         <img
@@ -31,6 +24,24 @@
           :alt="result.beverage.name"
           class="h-64 md:h-80 w-auto mx-auto"
         />
+      </div>
+
+      <!-- Nombre de la bebida -->
+      <div class="text-center mb-8">
+        <h1 class="text-white text-4xl md:text-5xl font-bold">
+          {{ result.beverage.name }}
+        </h1>
+      </div>
+
+      <!-- Texto de usuarios -->
+      <div class="mb-8 max-w-3xl text-center">
+        <p class="text-white text-lg md:text-xl leading-relaxed">
+          En Claro Media detectamos que, al igual que tú,
+          <span class="text-red-500 font-bold"
+            >{{ result.beverage.users }} Usuarios</span
+          >
+          se identifican con este coctel:
+        </p>
       </div>
 
       <!-- Descripción de la bebida -->

@@ -96,7 +96,7 @@
             for="habeasData"
             class="text-white text-lg leading-relaxed cursor-pointer"
           >
-            Acepto HABEAS DATA y tratamiento de datos personales.
+            Acepta nuestra politica de datos personales
           </label>
         </div>
 

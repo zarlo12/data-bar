@@ -256,30 +256,35 @@ export const beverages = {
     image: "/assets_base/7 Affinity Spritz.png",
     description:
       "Emocional y auténtico, busca conexión, estética y propósito en los contenidos.",
+    users: "267.494",
   },
   "Conversion Mule": {
     name: "Conversion Mule",
     image: "/assets_base/6 Conversion Mule.png",
     description:
       "Pragmático y racional, prefiere información útil y temas de economía o tecnología.",
+    users: "922.011",
   },
   "Engagement Tonic": {
     name: "Engagement Tonic",
     image: "/assets_base/8 Engagement Tonic.png",
     description:
       "Comunicador activo, disfruta tendencias, conversación y temas sociales o deportivos.",
+    users: "1.129.985",
   },
   "Data Brew": {
     name: "Data Brew",
     image: "/assets_base/10 Data Brew.png",
     description:
       "Analítico y curioso, valora datos precisos, innovación y conocimiento tecnológico.",
+    users: "868.474",
   },
   "Planters Punch": {
     name: "Planters Punch",
     image: "/assets_base/9 Planters Punch.png",
     description:
       "Un golpe de sabor futurista que anticipa las tendencias y prepara la mezcla ideal.",
+    users: "1.063.781",
   },
 };
 
