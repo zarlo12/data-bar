@@ -1,84 +1,94 @@
 <template>
   <div
-    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    class="w-full min-h-screen relative overflow-auto bg-cover bg-center"
     style="background-image: url('/assets_base/4FondoPersonaTenue.png')"
   >
     <!-- Contenedor principal -->
     <div
-      class="w-full h-full flex flex-col items-center justify-center px-8 py-16"
+      class="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:px-8 sm:py-16"
     >
       <!-- Logo en la parte superior -->
-      <div class="mb-12">
+      <div class="mb-8 sm:mb-12">
         <img
           src="/assets_base/3LogoClaromediaDataBar.png"
           alt="Claro Media Data Bar Logo"
-          class="h-32 md:h-40 lg:h-48 w-auto"
+          class="h-20 sm:h-24 md:h-32 lg:h-40 xl:h-48 w-auto max-w-[90vw]"
         />
       </div>
 
       <!-- Formulario centrado -->
-      <div class="w-full max-w-md space-y-8">
+      <div class="w-full max-w-md space-y-4 sm:space-y-6 md:space-y-8">
         <!-- Campo Nombre -->
         <div>
-          <label class="block text-white text-xl font-medium mb-3 text-center">
+          <label
+            class="block text-white text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-center"
+          >
             Nombre
           </label>
           <input
             type="text"
             v-model="userData.name"
-            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            class="w-full px-3 py-3 sm:px-4 sm:py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-base sm:text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
             required
           />
         </div>
 
         <!-- Campo Cédula -->
         <div>
-          <label class="block text-white text-xl font-medium mb-3 text-center">
+          <label
+            class="block text-white text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-center"
+          >
             Cédula
           </label>
           <input
             type="text"
             v-model="userData.cedula"
-            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            class="w-full px-3 py-3 sm:px-4 sm:py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-base sm:text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
             required
           />
         </div>
 
         <!-- Campo Celular -->
         <div>
-          <label class="block text-white text-xl font-medium mb-3 text-center">
+          <label
+            class="block text-white text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-center"
+          >
             Celular
           </label>
           <input
             type="tel"
             v-model="userData.phone"
-            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            class="w-full px-3 py-3 sm:px-4 sm:py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-base sm:text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
             required
           />
         </div>
 
         <!-- Campo Correo -->
         <div>
-          <label class="block text-white text-xl font-medium mb-3 text-center">
+          <label
+            class="block text-white text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-center"
+          >
             Correo
           </label>
           <input
             type="email"
             v-model="userData.email"
-            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            class="w-full px-3 py-3 sm:px-4 sm:py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-base sm:text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
             required
           />
         </div>
 
         <!-- Campo NIT -->
         <div>
-          <label class="block text-white text-xl font-medium mb-3 text-center">
+          <label
+            class="block text-white text-lg sm:text-xl font-medium mb-2 sm:mb-3 text-center"
+          >
             NIT
           </label>
           <input
             type="text"
             v-model="userData.nit"
-            class="w-full px-4 py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
+            class="w-full px-3 py-3 sm:px-4 sm:py-4 bg-black bg-opacity-60 border-2 border-red-600 rounded-lg text-white text-base sm:text-lg placeholder-gray-300 focus:outline-none focus:border-red-400"
             required
           />
         </div>
@@ -89,23 +99,23 @@
             type="checkbox"
             id="habeasData"
             v-model="userData.acceptTerms"
-            class="mt-1 w-5 h-5 text-red-600 bg-transparent border-2 border-red-600 rounded focus:ring-red-500 focus:ring-2"
+            class="mt-1 w-4 h-4 sm:w-5 sm:h-5 text-red-600 bg-transparent border-2 border-red-600 rounded focus:ring-red-500 focus:ring-2 flex-shrink-0"
             required
           />
           <label
             for="habeasData"
-            class="text-white text-lg leading-relaxed cursor-pointer"
+            class="text-white text-sm sm:text-base md:text-lg leading-relaxed cursor-pointer"
           >
             Acepta nuestra politica de datos personales
           </label>
         </div>
 
         <!-- Botón Enviar -->
-        <div class="pt-8">
+        <div class="pt-4 sm:pt-6 md:pt-8">
           <button
             @click="submitForm"
             type="button"
-            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
+            class="w-full bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-lg text-lg sm:text-xl transition-all duration-300 transform hover:scale-105"
             :disabled="!isFormValid"
             :class="{ 'opacity-50 cursor-not-allowed': !isFormValid }"
           >

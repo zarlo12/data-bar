@@ -4,9 +4,7 @@
     style="background-image: url('/assets_base/4FondoPersonaTenue.png')"
   >
     <!-- Contenedor principal -->
-    <div
-      class="w-full min-h-screen flex flex-col px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8"
-    >
+    <div class="w-full min-h-screen flex flex-col px-4 py-4 sm:px-6 sm:py-6 md:px-8 md:py-8">
       <!-- Header del Bartender -->
       <div class="mb-6 sm:mb-8 text-center">
         <img
@@ -14,9 +12,7 @@
           alt="Data Bar Logo"
           class="h-12 sm:h-14 md:h-16 lg:h-20 w-auto mx-auto mb-3 sm:mb-4 max-w-[90vw]"
         />
-        <h1
-          class="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2"
-        >
+        <h1 class="text-white text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold mb-2">
           🍹 Panel del Bartender
         </h1>
         <p class="text-white text-sm sm:text-base md:text-lg opacity-80">
@@ -24,38 +20,71 @@
         </p>
       </div>
 
+      <!-- Estadísticas rápidas -->
+      <!-- <div class="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
+        <div
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg p-4 text-center"
+        >
+          <div class="text-red-400 text-2xl font-bold">
+            {{ getTotalByBeverage('Conversion Mule') }}
+          </div>
+          <div class="text-white text-sm">Conversion Mule</div>
+        </div>
+        <div
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg p-4 text-center"
+        >
+          <div class="text-red-400 text-2xl font-bold">
+            {{ getTotalByBeverage('Affinity Spritz') }}
+          </div>
+          <div class="text-white text-sm">Affinity Spritz</div>
+        </div>
+        <div
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg p-4 text-center"
+        >
+          <div class="text-red-400 text-2xl font-bold">
+            {{ getTotalByBeverage('Engagement Tonic') }}
+          </div>
+          <div class="text-white text-sm">Engagement Tonic</div>
+        </div>
+        <div
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg p-4 text-center"
+        >
+          <div class="text-red-400 text-2xl font-bold">
+            {{ getTotalByBeverage('Data Brew') }}
+          </div>
+          <div class="text-white text-sm">Data Brew</div>
+        </div>
+        <div
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg p-4 text-center"
+        >
+          <div class="text-red-400 text-2xl font-bold">
+            {{ getTotalByBeverage('Planters Punch') }}
+          </div>
+          <div class="text-white text-sm">Planters Punch</div>
+        </div>
+      </div> -->
+
       <!-- Lista de pedidos -->
+            <!-- Lista de pedidos -->
       <div class="flex-1">
         <div
           class="bg-black bg-opacity-40 border-2 border-red-600 rounded-lg p-3 sm:p-4 md:p-6"
         >
-          <div
-            class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6"
-          >
-            <h2
-              class="text-white text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-0"
-            >
-              📋 Pedidos Recientes
-            </h2>
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6">
+            <h2 class="text-white text-lg sm:text-xl md:text-2xl font-bold mb-2 sm:mb-0">� Pedidos Recientes</h2>
           </div>
 
           <!-- Lista de pedidos -->
-          <div
-            class="space-y-3 sm:space-y-4 max-h-80 sm:max-h-96 overflow-y-auto"
-          >
+          <div class="space-y-3 sm:space-y-4 max-h-80 sm:max-h-96 overflow-y-auto">
             <div
               v-for="order in sortedOrders"
               :key="order.id"
               class="bg-black bg-opacity-60 border border-red-400 rounded-lg p-3 sm:p-4 hover:bg-opacity-80 transition-all duration-300"
             >
-              <div
-                class="flex flex-col sm:flex-row justify-between items-start"
-              >
+              <div class="flex flex-col sm:flex-row justify-between items-start">
                 <div class="flex-1 w-full sm:w-auto">
                   <div class="flex flex-col sm:flex-row sm:items-center mb-2">
-                    <span
-                      class="text-white text-base sm:text-lg font-bold mr-0 sm:mr-3 mb-1 sm:mb-0"
-                    >
+                    <span class="text-white text-base sm:text-lg font-bold mr-0 sm:mr-3 mb-1 sm:mb-0">
                       👤 {{ order.userData.name }}
                     </span>
                     <span
@@ -65,16 +94,12 @@
                     </span>
                   </div>
 
-                  <div
-                    class="text-red-400 text-lg sm:text-xl font-bold mb-2 sm:mb-0"
-                  >
+                  <div class="text-red-400 text-lg sm:text-xl font-bold mb-2 sm:mb-0">
                     🍹 {{ order.result.beverage }}
                   </div>
                 </div>
 
-                <div
-                  class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-4 sm:text-right"
-                >
+                <div class="w-full sm:w-auto mt-3 sm:mt-0 sm:ml-4 sm:text-right">
                   <button
                     @click="markAsServed(order.id)"
                     :class="[
@@ -124,6 +149,28 @@
         <div>
           <div class="font-bold text-sm sm:text-base">¡Nuevo Pedido!</div>
           <div class="text-xs sm:text-sm">
+            {{ lastOrderName }} - {{ lastOrderBeverage }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+          🏠 Volver al Inicio
+        </button>
+      </div>
+    </div>
+
+    <!-- Notificación de nuevo pedido -->
+    <div
+      v-if="showNewOrderNotification"
+      class="fixed top-4 right-4 bg-green-600 text-white px-6 py-4 rounded-lg shadow-lg transform transition-all duration-500 animate-bounce"
+    >
+      <div class="flex items-center">
+        <span class="text-2xl mr-2">🔔</span>
+        <div>
+          <div class="font-bold">¡Nuevo Pedido!</div>
+          <div class="text-sm">
             {{ lastOrderName }} - {{ lastOrderBeverage }}
           </div>
         </div>

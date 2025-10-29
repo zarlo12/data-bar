@@ -1,41 +1,43 @@
 <template>
   <div
-    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    class="w-full min-h-screen relative overflow-auto bg-cover bg-center"
     style="background-image: url('/assets_base/5Fondo.png')"
   >
     <!-- Contenedor principal -->
     <div
-      class="w-full h-full flex flex-col items-center justify-center px-8 py-16"
+      class="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:px-8 sm:py-16"
       v-if="result"
     >
       <!-- Logo en la parte superior -->
-      <div class="mb-8">
+      <div class="mb-6 sm:mb-8">
         <img
           src="/assets_base/3LogoClaromediaDataBar.png"
           alt="Claro Media Data Bar Logo"
-          class="h-32 md:h-40 lg:h-48 w-auto"
+          class="h-16 sm:h-20 md:h-24 lg:h-32 xl:h-40 w-auto max-w-[90vw]"
         />
       </div>
 
       <!-- Imagen de la bebida -->
-      <div class="mb-8">
+      <div class="mb-6 sm:mb-8">
         <img
           :src="result.beverage.image"
           :alt="result.beverage.name"
-          class="h-64 md:h-80 w-auto mx-auto"
+          class="h-40 sm:h-48 md:h-56 lg:h-64 xl:h-80 w-auto mx-auto max-w-[80vw]"
         />
       </div>
 
       <!-- Nombre de la bebida -->
-      <div class="text-center mb-8">
-        <h1 class="text-white text-4xl md:text-5xl font-bold">
+      <div class="text-center mb-6 sm:mb-8">
+        <h1
+          class="text-white text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold px-4"
+        >
           {{ result.beverage.name }}
         </h1>
       </div>
 
       <!-- Texto de usuarios -->
-      <div class="mb-8 max-w-3xl text-center">
-        <p class="text-white text-lg md:text-xl leading-relaxed">
+      <div class="mb-6 sm:mb-8 max-w-3xl text-center px-4">
+        <p class="text-white text-base sm:text-lg md:text-xl leading-relaxed">
           En Claro Media detectamos que, al igual que tú,
           <span class="text-red-500 font-bold"
             >{{ result.beverage.users }} Usuarios</span
@@ -45,22 +47,24 @@
       </div>
 
       <!-- Descripción de la bebida -->
-      <div class="mb-12 max-w-2xl">
+      <div class="mb-8 sm:mb-12 max-w-2xl px-4">
         <div
-          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg px-6 py-4"
+          class="bg-black bg-opacity-60 border-2 border-red-600 rounded-lg px-4 py-3 sm:px-6 sm:py-4"
         >
-          <p class="text-white text-lg md:text-xl text-center leading-relaxed">
+          <p
+            class="text-white text-base sm:text-lg md:text-xl text-center leading-relaxed"
+          >
             {{ result.beverage.description }}
           </p>
         </div>
       </div>
 
       <!-- Botón Reclama tu bebida -->
-      <div>
+      <div class="w-full max-w-md px-4">
         <button
           @click="claimBeverage"
           :disabled="isClaiming"
-          class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
+          class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 sm:py-4 sm:px-12 rounded-lg text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 mx-auto block min-w-[250px]"
           :class="{ 'opacity-50 cursor-not-allowed': isClaiming }"
         >
           <span v-if="!isClaiming"> Reclama tu bebida </span>
@@ -92,15 +96,18 @@
     </div>
 
     <!-- Estado de carga -->
-    <div v-else class="w-full h-full flex flex-col items-center justify-center">
+    <div
+      v-else
+      class="w-full min-h-screen flex flex-col items-center justify-center px-4"
+    >
       <div class="text-center">
         <div
-          class="animate-spin rounded-full h-16 w-16 border-b-2 border-red-600 mx-auto mb-4"
+          class="animate-spin rounded-full h-12 w-12 sm:h-16 sm:w-16 border-b-2 border-red-600 mx-auto mb-4"
         ></div>
-        <h2 class="text-white text-2xl font-bold mb-2">
+        <h2 class="text-white text-xl sm:text-2xl font-bold mb-2">
           Calculando tu resultado...
         </h2>
-        <p class="text-white opacity-80">
+        <p class="text-white opacity-80 text-sm sm:text-base">
           Analizando tus respuestas para encontrar tu bebida perfecta
         </p>
       </div>

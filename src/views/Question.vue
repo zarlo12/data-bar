@@ -1,55 +1,57 @@
 <template>
   <div
-    class="w-full h-screen relative overflow-hidden bg-cover bg-center"
+    class="w-full min-h-screen relative overflow-auto bg-cover bg-center"
     style="background-image: url('/assets_base/4FondoPersonaTenue.png')"
   >
     <!-- Contenedor principal -->
     <div
-      class="w-full h-full flex flex-col items-center justify-center px-8 py-16"
+      class="w-full min-h-screen flex flex-col items-center justify-center px-4 py-8 sm:px-8 sm:py-16"
       v-if="currentQuestion"
     >
       <!-- Logo en la parte superior -->
-      <div class="mb-12">
+      <div class="mb-8 sm:mb-12">
         <img
           src="/assets_base/3LogoClaromediaDataBar.png"
           alt="Claro Media Data Bar Logo"
-          class="h-32 md:h-40 lg:h-48 w-auto"
+          class="h-16 sm:h-20 md:h-24 lg:h-32 xl:h-40 w-auto max-w-[90vw]"
         />
       </div>
 
       <!-- Pregunta centrada -->
-      <div class="text-center mb-12">
+      <div class="text-center mb-8 sm:mb-12">
         <h2
-          class="text-white text-2xl md:text-3xl font-bold leading-tight max-w-2xl"
+          class="text-white text-xl sm:text-2xl md:text-3xl font-bold leading-tight max-w-2xl px-4"
         >
           {{ currentQuestion.text }}
         </h2>
       </div>
 
       <!-- Opciones de respuesta -->
-      <div class="w-full max-w-2xl space-y-4 mb-12">
+      <div class="w-full max-w-2xl space-y-3 sm:space-y-4 mb-8 sm:mb-12">
         <button
           v-for="option in currentQuestion.options"
           :key="option.id"
           @click="selectOption(option.id)"
           :class="[
-            'w-full px-6 py-4 bg-black bg-opacity-40 rounded-lg text-white text-left text-lg hover:bg-opacity-60 transition-all duration-300',
+            'w-full px-4 py-3 sm:px-6 sm:py-4 bg-black bg-opacity-40 rounded-lg text-white text-left text-base sm:text-lg hover:bg-opacity-60 transition-all duration-300',
             selectedOption === option.id 
               ? 'border-4 border-red-400 bg-red-600 bg-opacity-20 shadow-lg shadow-red-500/50' 
               : 'border-2 border-red-600'
           ]"
         >
-          <span class="text-red-400 font-bold mr-3">{{ option.id }})</span>
-          <span>{{ option.text }}</span>
+          <span class="text-red-400 font-bold mr-2 sm:mr-3"
+            >{{ option.id }})</span
+          >
+          <span class="break-words">{{ option.text }}</span>
         </button>
       </div>
 
       <!-- Botón Siguiente -->
-      <div>
+      <div class="w-full max-w-md">
         <button
           @click="nextQuestion"
           :disabled="!selectedOption"
-          class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105"
+          class="w-full sm:w-auto bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 sm:py-4 sm:px-12 rounded-lg text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 mx-auto block min-w-[200px]"
           :class="{ 'opacity-50 cursor-not-allowed': !selectedOption }"
         >
           Siguiente

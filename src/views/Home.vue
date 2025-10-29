@@ -15,15 +15,17 @@
     </div>
 
     <!-- Contenedor principal centrado -->
-    <div class="w-full h-full flex flex-col items-center justify-center px-8">
+    <div
+      class="w-full h-full flex flex-col items-center justify-center px-4 py-8 sm:px-8"
+    >
       <!-- Grupo de elementos centrados -->
-      <div class="flex flex-col items-center space-y-8">
+      <div class="flex flex-col items-center space-y-6 sm:space-y-8">
         <!-- Logo Claro Media -->
         <div class="animate-fade-in" style="animation-delay: 0.2s">
           <img
             src="/assets_base/1LogoClaroMedia.png"
             alt="Claro Media Logo"
-            class="h-24 md:h-32 w-auto transition-all duration-300"
+            class="h-16 sm:h-20 md:h-24 lg:h-32 w-auto transition-all duration-300"
             @load="onImageLoad"
           />
         </div>
@@ -33,16 +35,16 @@
           <img
             src="/assets_base/2LogoDataBarServimosresultadosefectivos.png"
             alt="Data Bar - Servimos resultados efectivos"
-            class="h-48 md:h-56 lg:h-64 w-auto transition-all duration-300"
+            class="h-32 sm:h-40 md:h-48 lg:h-56 xl:h-64 w-auto max-w-[90vw] transition-all duration-300"
             @load="onImageLoad"
           />
         </div>
 
         <!-- Botón Comenzar -->
-        <div class="mt-4 animate-fade-in" style="animation-delay: 0.6s">
+        <div class="mt-4 sm:mt-6 animate-fade-in" style="animation-delay: 0.6s">
           <button
             @click="startQuiz"
-            class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-12 rounded-lg text-xl transition-all duration-300 transform hover:scale-105 shadow-lg"
+            class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-8 sm:py-4 sm:px-12 rounded-lg text-lg sm:text-xl transition-all duration-300 transform hover:scale-105 shadow-lg w-full sm:w-auto min-w-[200px]"
           >
             Comenzar
           </button>
