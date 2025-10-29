@@ -92,7 +92,10 @@
             class="mt-1 w-5 h-5 text-red-600 bg-transparent border-2 border-red-600 rounded focus:ring-red-500 focus:ring-2"
             required
           />
-          <label for="habeasData" class="text-white text-lg leading-relaxed cursor-pointer">
+          <label
+            for="habeasData"
+            class="text-white text-lg leading-relaxed cursor-pointer"
+          >
             Acepto HABEAS DATA y tratamiento de datos personales.
           </label>
         </div>
