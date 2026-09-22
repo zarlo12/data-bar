@@ -1,189 +1,70 @@
-// Datos para el cálculo de bebidas basado en las respuestas
+// Catálogo de bebidas disponibles en la barra.
+// Solo estas 3 bebidas pueden salir como resultado del quiz.
+export const beverages = {
+  Whisky: {
+    name: "Whisky",
+    image: "/assets_base/10 Data Brew.png",
+    description:
+      "Carácter fuerte y decidido. Valora los datos precisos, la estrategia bien armada y los resultados que se sostienen solos.",
+    users: "868.474",
+  },
+  Tequila: {
+    name: "Tequila",
+    image: "/assets_base/9 Planters Punch.png",
+    description:
+      "Social y vibrante. Vive de la conversación, la energía compartida y la conexión directa con la gente.",
+    users: "1.063.781",
+  },
+  Ginebra: {
+    name: "Ginebra",
+    image: "/assets_base/8 Engagement Tonic.png",
+    description:
+      "Fresca y creativa. Se mueve por la innovación, el diseño y las experiencias que se sienten auténticas.",
+    users: "1.129.985",
+  },
+};
+
+// Lista de nombres válidos, derivada del catálogo.
+// Agregar o quitar una bebida arriba se propaga solo a todo el cálculo.
+export const beverageNames = Object.keys(beverages);
+
+// Puntuación por pregunta y opción.
+// Cada opción reparte puntos entre las 3 bebidas; ninguna opción queda en ceros.
 export const beverageScoring = {
   Q1: {
-    a: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    b: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    c: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 1,
-    },
-    d: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 1,
-    },
-    e: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
+    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Dulce y vibrante
+    b: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Refrescante y ligero
+    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Intenso y fuerte
+    d: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Exótico y diferente
+    e: { Whisky: 1, Tequila: 0, Ginebra: 1 }, // Fresco y artesanal
   },
   Q2: {
-    a: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    b: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    c: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    d: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 1,
-    },
-    e: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
+    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Bailar y disfrutar de la música
+    b: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Relajarme bajo el sol
+    c: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Jugar y hacer deporte
+    d: { Whisky: 1, Tequila: 0, Ginebra: 1 }, // Explorar y descubrir
+    e: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Brindar en el atardecer
   },
   Q3: {
-    a: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 1,
-    },
-    b: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    c: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    d: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 1,
-    },
-    e: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
+    a: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Innovación y tecnología
+    b: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Cercanía y conexión humana
+    c: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Diversión y entretenimiento
+    d: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Impacto positivo y sostenibilidad
+    e: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Autenticidad y sabor real
   },
   Q4: {
-    a: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    b: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    c: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    d: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 0,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
-    e: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
+    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Reach
+    b: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Engagement
+    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Conversion
+    d: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Awareness
+    e: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Conexión emocional auténtica
   },
   Q5: {
-    a: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 1,
-    },
-    b: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
-    c: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
-    d: {
-      "Affinity Spritz": 0,
-      "Conversion Mule": 1,
-      "Engagement Tonic": 0,
-      "Data Brew": 1,
-      "Planters Punch": 0,
-    },
-    e: {
-      "Affinity Spritz": 1,
-      "Conversion Mule": 0,
-      "Engagement Tonic": 1,
-      "Data Brew": 0,
-      "Planters Punch": 0,
-    },
+    a: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Creatividad
+    b: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Precisión
+    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Datos
+    d: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Tecnología
+    e: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Un toque refrescante
   },
 };
 
@@ -249,75 +130,48 @@ export const questions = [
   },
 ];
 
-// Información de las bebidas
-export const beverages = {
-  "Affinity Spritz": {
-    name: "Affinity Spritz",
-    image: "/assets_base/7 Affinity Spritz.png",
-    description:
-      "Emocional y auténtico, busca conexión, estética y propósito en los contenidos.",
-    users: "267.494",
-  },
-  "Conversion Mule": {
-    name: "Conversion Mule",
-    image: "/assets_base/6 Conversion Mule.png",
-    description:
-      "Pragmático y racional, prefiere información útil y temas de economía o tecnología.",
-    users: "922.011",
-  },
-  "Engagement Tonic": {
-    name: "Engagement Tonic",
-    image: "/assets_base/8 Engagement Tonic.png",
-    description:
-      "Comunicador activo, disfruta tendencias, conversación y temas sociales o deportivos.",
-    users: "1.129.985",
-  },
-  "Data Brew": {
-    name: "Data Brew",
-    image: "/assets_base/10 Data Brew.png",
-    description:
-      "Analítico y curioso, valora datos precisos, innovación y conocimiento tecnológico.",
-    users: "868.474",
-  },
-  "Planters Punch": {
-    name: "Planters Punch",
-    image: "/assets_base/9 Planters Punch.png",
-    description:
-      "Un golpe de sabor futurista que anticipa las tendencias y prepara la mezcla ideal.",
-    users: "1.063.781",
-  },
-};
+// Desempate estable: a partir de las mismas respuestas siempre sale la misma
+// bebida, así que recargar la pantalla de resultado no cambia lo que ya se vio.
+// Al mismo tiempo reparte los empates entre las bebidas en lugar de darle
+// siempre la ventaja a la primera de la lista.
+function breakTie(tiedBeverages, answers) {
+  const seed = Object.keys(answers)
+    .sort()
+    .map((questionId) => `${questionId}:${answers[questionId]}`)
+    .join("|");
+
+  let hash = 0;
+  for (let i = 0; i < seed.length; i++) {
+    hash = (hash * 31 + seed.charCodeAt(i)) >>> 0;
+  }
+
+  return tiedBeverages[hash % tiedBeverages.length];
+}
 
 // Función para calcular la bebida ganadora
-export function calculateBeverage(answers) {
-  const scores = {
-    "Affinity Spritz": 0,
-    "Conversion Mule": 0,
-    "Engagement Tonic": 0,
-    "Data Brew": 0,
-    "Planters Punch": 0,
-  };
+export function calculateBeverage(answers = {}) {
+  const scores = {};
+  beverageNames.forEach((beverage) => {
+    scores[beverage] = 0;
+  });
 
   // Calcular puntuaciones basadas en las respuestas
   Object.keys(answers).forEach((questionId) => {
-    const answer = answers[questionId];
-    const questionScores = beverageScoring[questionId][answer];
+    const questionScores = beverageScoring[questionId]?.[answers[questionId]];
+    if (!questionScores) return; // respuesta desconocida: se ignora
 
-    Object.keys(questionScores).forEach((beverage) => {
-      scores[beverage] += questionScores[beverage];
+    beverageNames.forEach((beverage) => {
+      scores[beverage] += questionScores[beverage] || 0;
     });
   });
 
-  // Encontrar la bebida con mayor puntuación
-  let maxScore = 0;
-  let winningBeverage = "";
+  // Encontrar la puntuación más alta y todas las bebidas que la alcanzan
+  const maxScore = Math.max(...beverageNames.map((b) => scores[b]));
+  const leaders = beverageNames.filter((b) => scores[b] === maxScore);
 
-  Object.keys(scores).forEach((beverage) => {
-    if (scores[beverage] > maxScore) {
-      maxScore = scores[beverage];
-      winningBeverage = beverage;
-    }
-  });
+  // Siempre se devuelve una bebida válida, incluso sin respuestas
+  const winningBeverage =
+    leaders.length === 1 ? leaders[0] : breakTie(leaders, answers);
 
   return {
     beverage: winningBeverage,

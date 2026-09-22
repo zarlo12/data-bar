@@ -42,7 +42,7 @@
           <span class="text-red-500 font-bold"
             >{{ result.beverage.users }} Usuarios</span
           >
-          se identifican con este coctel:
+          se identifican con esta bebida:
         </p>
       </div>
 
@@ -136,10 +136,18 @@ export default {
       try {
         const answers = JSON.parse(localStorage.getItem('quizAnswers') || '{}')
         const calculation = calculateBeverage(answers)
+        const beverage = beverages[calculation.beverage]
+
+        // Si por alguna razón no hay bebida válida, no dejamos la pantalla rota
+        if (!beverage) {
+          console.error('Bebida no encontrada en el catálogo:', calculation.beverage)
+          this.$router.push('/')
+          return
+        }
 
         this.result = {
           ...calculation,
-          beverage: beverages[calculation.beverage]
+          beverage
         }
       } catch (error) {
         console.error('Error calculating result:', error)

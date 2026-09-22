@@ -10,11 +10,10 @@
       <img src="/assets_base/3LogoClaromediaDataBar.png" alt="preload" />
       <img src="/assets_base/4FondoPersona.png" alt="preload" />
       <img src="/assets_base/4FondoPersonaTenue.png" alt="preload" />
-      <img src="/assets_base/6 Conversion Mule.png" alt="preload" />
-      <img src="/assets_base/7 Affinity Spritz.png" alt="preload" />
-      <img src="/assets_base/8 Engagement Tonic.png" alt="preload" />
-      <img src="/assets_base/9 Planters Punch.png" alt="preload" />
+      <!-- Imágenes de las 3 bebidas activas (ver beverageLogic.js) -->
       <img src="/assets_base/10 Data Brew.png" alt="preload" />
+      <img src="/assets_base/9 Planters Punch.png" alt="preload" />
+      <img src="/assets_base/8 Engagement Tonic.png" alt="preload" />
     </div>
 
     <!-- Transición suave entre páginas -->
@@ -39,11 +38,9 @@ export default {
         '/assets_base/3LogoClaromediaDataBar.png',
         '/assets_base/4FondoPersona.png',
         '/assets_base/4FondoPersonaTenue.png',
-        '/assets_base/6 Conversion Mule.png',
-        '/assets_base/7 Affinity Spritz.png',
-        '/assets_base/8 Engagement Tonic.png',
+        '/assets_base/10 Data Brew.png',
         '/assets_base/9 Planters Punch.png',
-        '/assets_base/10 Data Brew.png'
+        '/assets_base/8 Engagement Tonic.png'
       ]
 
       imageUrls.forEach(url => {
