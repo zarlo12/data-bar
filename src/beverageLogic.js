@@ -1,22 +1,30 @@
 // Catálogo de bebidas disponibles en la barra.
 // Solo estas 3 bebidas pueden salir como resultado del quiz.
+//
+// La clave (whisky / tequila / ginebra) es interna y no se muestra en pantalla:
+// es la que usa la tabla de puntajes. Para cambiarle el nombre a una bebida
+// basta con editar su "name" aquí; no hay que tocar nada más.
+// "spirit" es el destilado base, lo que el bartender tiene que servir.
 export const beverages = {
-  Whisky: {
-    name: "Whisky",
+  whisky: {
+    name: "Whisky Analítico",
+    spirit: "Whisky",
     image: "/assets_base/10 Data Brew.png",
     description:
       "Carácter fuerte y decidido. Valora los datos precisos, la estrategia bien armada y los resultados que se sostienen solos.",
     users: "868.474",
   },
-  Tequila: {
-    name: "Tequila",
+  tequila: {
+    name: "Insight Margarito",
+    spirit: "Tequila",
     image: "/assets_base/9 Planters Punch.png",
     description:
       "Social y vibrante. Vive de la conversación, la energía compartida y la conexión directa con la gente.",
     users: "1.063.781",
   },
-  Ginebra: {
-    name: "Ginebra",
+  ginebra: {
+    name: "Ginebra Byte",
+    spirit: "Ginebra",
     image: "/assets_base/8 Engagement Tonic.png",
     description:
       "Fresca y creativa. Se mueve por la innovación, el diseño y las experiencias que se sienten auténticas.",
@@ -24,7 +32,7 @@ export const beverages = {
   },
 };
 
-// Lista de nombres válidos, derivada del catálogo.
+// Claves válidas, derivadas del catálogo.
 // Agregar o quitar una bebida arriba se propaga solo a todo el cálculo.
 export const beverageNames = Object.keys(beverages);
 
@@ -32,39 +40,39 @@ export const beverageNames = Object.keys(beverages);
 // Cada opción reparte puntos entre las 3 bebidas; ninguna opción queda en ceros.
 export const beverageScoring = {
   Q1: {
-    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Dulce y vibrante
-    b: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Refrescante y ligero
-    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Intenso y fuerte
-    d: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Exótico y diferente
-    e: { Whisky: 1, Tequila: 0, Ginebra: 1 }, // Fresco y artesanal
+    a: { whisky: 0, tequila: 2, ginebra: 0 }, // Dulce y vibrante
+    b: { whisky: 0, tequila: 0, ginebra: 2 }, // Refrescante y ligero
+    c: { whisky: 2, tequila: 0, ginebra: 0 }, // Intenso y fuerte
+    d: { whisky: 0, tequila: 1, ginebra: 1 }, // Exótico y diferente
+    e: { whisky: 1, tequila: 0, ginebra: 1 }, // Fresco y artesanal
   },
   Q2: {
-    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Bailar y disfrutar de la música
-    b: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Relajarme bajo el sol
-    c: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Jugar y hacer deporte
-    d: { Whisky: 1, Tequila: 0, Ginebra: 1 }, // Explorar y descubrir
-    e: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Brindar en el atardecer
+    a: { whisky: 0, tequila: 2, ginebra: 0 }, // Bailar y disfrutar de la música
+    b: { whisky: 0, tequila: 0, ginebra: 2 }, // Relajarme bajo el sol
+    c: { whisky: 0, tequila: 1, ginebra: 1 }, // Jugar y hacer deporte
+    d: { whisky: 1, tequila: 0, ginebra: 1 }, // Explorar y descubrir
+    e: { whisky: 2, tequila: 0, ginebra: 0 }, // Brindar en el atardecer
   },
   Q3: {
-    a: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Innovación y tecnología
-    b: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Cercanía y conexión humana
-    c: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Diversión y entretenimiento
-    d: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Impacto positivo y sostenibilidad
-    e: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Autenticidad y sabor real
+    a: { whisky: 0, tequila: 0, ginebra: 2 }, // Innovación y tecnología
+    b: { whisky: 0, tequila: 2, ginebra: 0 }, // Cercanía y conexión humana
+    c: { whisky: 0, tequila: 2, ginebra: 0 }, // Diversión y entretenimiento
+    d: { whisky: 0, tequila: 1, ginebra: 1 }, // Impacto positivo y sostenibilidad
+    e: { whisky: 2, tequila: 0, ginebra: 0 }, // Autenticidad y sabor real
   },
   Q4: {
-    a: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Reach
-    b: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Engagement
-    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Conversion
-    d: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Awareness
-    e: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Conexión emocional auténtica
+    a: { whisky: 0, tequila: 2, ginebra: 0 }, // Reach
+    b: { whisky: 0, tequila: 1, ginebra: 1 }, // Engagement
+    c: { whisky: 2, tequila: 0, ginebra: 0 }, // Conversion
+    d: { whisky: 2, tequila: 0, ginebra: 0 }, // Awareness
+    e: { whisky: 0, tequila: 0, ginebra: 2 }, // Conexión emocional auténtica
   },
   Q5: {
-    a: { Whisky: 0, Tequila: 1, Ginebra: 1 }, // Creatividad
-    b: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Precisión
-    c: { Whisky: 2, Tequila: 0, Ginebra: 0 }, // Datos
-    d: { Whisky: 0, Tequila: 0, Ginebra: 2 }, // Tecnología
-    e: { Whisky: 0, Tequila: 2, Ginebra: 0 }, // Un toque refrescante
+    a: { whisky: 0, tequila: 1, ginebra: 1 }, // Creatividad
+    b: { whisky: 2, tequila: 0, ginebra: 0 }, // Precisión
+    c: { whisky: 2, tequila: 0, ginebra: 0 }, // Datos
+    d: { whisky: 0, tequila: 0, ginebra: 2 }, // Tecnología
+    e: { whisky: 0, tequila: 2, ginebra: 0 }, // Un toque refrescante
   },
 };
 
