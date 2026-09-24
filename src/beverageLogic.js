@@ -4,27 +4,23 @@
 // La clave (whisky / tequila / ginebra) es interna y no se muestra en pantalla:
 // es la que usa la tabla de puntajes. Para cambiarle el nombre a una bebida
 // basta con editar su "name" aquí; no hay que tocar nada más.
-// "spirit" es el destilado base, lo que el bartender tiene que servir.
 export const beverages = {
   whisky: {
-    name: "Whisky Analítico",
-    spirit: "Whisky",
+    name: "Whisky Analítico", // base: whisky
     image: "/assets_base/10 Data Brew.png",
     description:
       "Carácter fuerte y decidido. Valora los datos precisos, la estrategia bien armada y los resultados que se sostienen solos.",
     users: "868.474",
   },
   tequila: {
-    name: "Insight Margarito",
-    spirit: "Tequila",
+    name: "Insight Margarito", // base: tequila
     image: "/assets_base/9 Planters Punch.png",
     description:
       "Social y vibrante. Vive de la conversación, la energía compartida y la conexión directa con la gente.",
     users: "1.063.781",
   },
   ginebra: {
-    name: "Ginebra Byte",
-    spirit: "Ginebra",
+    name: "Ginebra Byte", // base: ginebra
     image: "/assets_base/8 Engagement Tonic.png",
     description:
       "Fresca y creativa. Se mueve por la innovación, el diseño y las experiencias que se sienten auténticas.",

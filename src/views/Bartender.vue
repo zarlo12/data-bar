@@ -65,16 +65,10 @@
                     </span>
                   </div>
 
-                  <div class="text-red-400 text-lg sm:text-xl font-bold">
-                    🍹 {{ order.result.beverage }}
-                  </div>
-
-                  <!-- Destilado base, para que el bartender sepa qué servir -->
                   <div
-                    v-if="spiritOf(order.result.beverage)"
-                    class="text-white text-sm sm:text-base opacity-70 mb-2 sm:mb-0"
+                    class="text-red-400 text-lg sm:text-xl font-bold mb-2 sm:mb-0"
                   >
-                    Servir: {{ spiritOf(order.result.beverage) }}
+                    🍹 {{ order.result.beverage }}
                   </div>
                 </div>
 
@@ -140,7 +134,6 @@
 
 <script>
 import { db } from '../firebase.js'
-import { beverages } from '../beverageLogic.js'
 import { collection, onSnapshot, query, orderBy, doc, updateDoc } from 'firebase/firestore'
 
 export default {
@@ -233,11 +226,6 @@ export default {
       } catch (error) {
         console.error('Error marking order as served:', error)
       }
-    },
-
-    spiritOf(beverageName) {
-      const match = Object.values(beverages).find(b => b.name === beverageName)
-      return match ? match.spirit : ''
     },
 
     getTotalByBeverage(beverageName) {
