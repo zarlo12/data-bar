@@ -93,20 +93,20 @@
         <div class="max-w-5xl w-full mx-auto mb-6">
           <div class="flex flex-col sm:flex-row gap-3">
             <button
-              @click="downloadCsv(';')"
-              :disabled="!records.length"
+              @click="downloadExcel"
+              :disabled="!records.length || generating"
               class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg text-base sm:text-lg transition-all duration-300"
-              :class="{ 'opacity-50 cursor-not-allowed': !records.length }"
+              :class="{ 'opacity-50 cursor-not-allowed': !records.length || generating }"
             >
-              ⬇️ Descargar para Excel
+              {{ generating ? 'Generando archivo...' : '⬇️ Descargar Excel (.xlsx)' }}
             </button>
             <button
-              @click="downloadCsv(',')"
-              :disabled="!records.length"
-              class="flex-1 bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-base sm:text-lg transition-all duration-300"
-              :class="{ 'opacity-50 cursor-not-allowed': !records.length }"
+              @click="downloadCsv"
+              :disabled="!records.length || generating"
+              class="sm:flex-none bg-gray-700 hover:bg-gray-600 text-white font-bold py-4 px-6 rounded-lg text-base transition-all duration-300"
+              :class="{ 'opacity-50 cursor-not-allowed': !records.length || generating }"
             >
-              ⬇️ CSV separado por comas
+              CSV
             </button>
             <button
               @click="loadRecords"
@@ -116,8 +116,8 @@
             </button>
           </div>
           <p class="text-white text-xs opacity-70 mt-2 text-center sm:text-left">
-            Si al abrirlo en Excel todo cae en una sola columna, usa el otro
-            botón: cambia el separador.
+            El .xlsx ya viene con formato, filtros y los teléfonos como texto.
+            El CSV es solo por si necesitas subir los datos a otro sistema.
           </p>
         </div>
 
@@ -153,7 +153,7 @@
                     class="border-b border-gray-800"
                   >
                     <td class="py-2 pr-4 whitespace-nowrap opacity-80">
-                      {{ row.fecha }} {{ row.hora }}
+                      {{ formatDate(row.fecha) }} {{ row.hora }}
                     </td>
                     <td class="py-2 pr-4 whitespace-nowrap">{{ row.nombre }}</td>
                     <td class="py-2 pr-4 whitespace-nowrap opacity-80">
@@ -189,7 +189,12 @@
 <script>
 import { db } from '../firebase.js'
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { questions, beverages, beverageNames } from '../beverageLogic.js'
+import {
+  buildColumns,
+  buildRows,
+  buildBeverageTotals,
+  buildDayTotals
+} from '../exportWorkbook.js'
 
 export default {
   name: 'Export',
@@ -197,117 +202,22 @@ export default {
     return {
       records: [],
       loading: true,
+      generating: false,
       error: null
     }
   },
   computed: {
-    // Una fila plana por participante, lista para la tabla y para el CSV
     rows() {
-      return this.records.map(record => {
-        const user = record.userData || {}
-        const result = record.result || {}
-        const answers = record.answers || {}
-        const date = this.toDate(record.timestamp)
-
-        const row = {
-          id: record.id,
-          fecha: date ? date.toLocaleDateString('es-MX') : '',
-          hora: date ? date.toLocaleTimeString('es-MX') : '',
-          nombre: user.name || '',
-          cedula: user.cedula || '',
-          telefono: user.phone || '',
-          email: user.email || '',
-          nit: user.nit || '',
-          terminos: user.acceptTerms ? 'Sí' : 'No',
-          bebida: result.beverage || '',
-          puntaje: result.score ?? ''
-        }
-
-        // Puntaje que obtuvo cada bebida
-        beverageNames.forEach(key => {
-          row[`puntaje_${key}`] = result.allScores?.[key] ?? ''
-        })
-
-        // Respuesta de cada pregunta: la letra y el texto completo
-        questions.forEach(question => {
-          const optionId = answers[question.id] || ''
-          const option = question.options.find(o => o.id === optionId)
-          row[`${question.id}_opcion`] = optionId
-          row[`${question.id}_respuesta`] = option ? option.text.trim() : ''
-        })
-
-        row.reclamado = record.claimed ? 'Sí' : 'No'
-        row.servido = record.served ? 'Sí' : 'No'
-        const servedAt = this.toDate(record.servedAt)
-        row.hora_servido = servedAt ? servedAt.toLocaleString('es-MX') : ''
-
-        return row
-      })
+      return buildRows(this.records)
     },
-
     previewRows() {
       return this.rows.slice(0, 15)
     },
-
-    // Encabezados del CSV, en el mismo orden que las columnas de cada fila
-    columns() {
-      const base = [
-        ['fecha', 'Fecha'],
-        ['hora', 'Hora'],
-        ['nombre', 'Nombre'],
-        ['cedula', 'Cédula'],
-        ['telefono', 'Teléfono'],
-        ['email', 'Email'],
-        ['nit', 'NIT'],
-        ['terminos', 'Aceptó términos'],
-        ['bebida', 'Bebida'],
-        ['puntaje', 'Puntaje']
-      ]
-
-      beverageNames.forEach(key => {
-        base.push([`puntaje_${key}`, `Puntos ${beverages[key].name}`])
-      })
-
-      questions.forEach(question => {
-        base.push([`${question.id}_opcion`, `${question.id} opción`])
-        base.push([`${question.id}_respuesta`, `${question.id} — ${question.text}`])
-      })
-
-      base.push(['reclamado', 'Reclamado'])
-      base.push(['servido', 'Servido'])
-      base.push(['hora_servido', 'Hora en que se sirvió'])
-      base.push(['id', 'ID del registro'])
-
-      return base
-    },
-
     beverageTotals() {
-      const counts = new Map()
-
-      // Se cuenta por el nombre guardado en cada registro, no por el catálogo
-      // actual: en la base quedaron resultados con los nombres anteriores.
-      beverageNames.forEach(key => counts.set(beverages[key].name, 0))
-      this.records.forEach(record => {
-        const name = record.result?.beverage || 'Sin bebida'
-        counts.set(name, (counts.get(name) || 0) + 1)
-      })
-
-      return [...counts.entries()]
-        .map(([name, total]) => ({ name, total }))
-        .sort((a, b) => b.total - a.total)
+      return buildBeverageTotals(this.records)
     },
-
     dayTotals() {
-      const counts = new Map()
-      this.records.forEach(record => {
-        const date = this.toDate(record.timestamp)
-        if (!date) return
-        const label = date.toLocaleDateString('es-MX')
-        counts.set(label, (counts.get(label) || 0) + 1)
-      })
-      return [...counts.entries()]
-        .map(([label, total]) => ({ label, total }))
-        .sort((a, b) => a.label.localeCompare(b.label))
+      return buildDayTotals(this.records)
     }
   },
   async mounted() {
@@ -331,46 +241,82 @@ export default {
       }
     },
 
-    // Firestore devuelve Timestamp, pero un registro viejo puede traer Date o nada
-    toDate(value) {
-      if (!value) return null
-      if (typeof value.toDate === 'function') return value.toDate()
-      const date = new Date(value)
-      return isNaN(date.getTime()) ? null : date
+    formatDate(date) {
+      return date ? date.toLocaleDateString('es-MX') : ''
     },
 
-    escapeCsv(value, delimiter) {
+    saveFile(blob, filename) {
+      const url = URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = filename
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+      URL.revokeObjectURL(url)
+    },
+
+    async downloadExcel() {
+      this.generating = true
+
+      try {
+        // Carga diferida: ExcelJS pesa, y no tiene por qué descargarlo
+        // cada participante que abre el quiz en la tableta
+        const [excelModule, { buildWorkbook }] = await Promise.all([
+          import('exceljs/dist/exceljs.min.js'),
+          import('../exportWorkbook.js')
+        ])
+
+        // exceljs.min.js es UMD: según cómo lo empaquete el bundler,
+        // el constructor puede venir en .default o en la raíz del módulo
+        const ExcelJS = excelModule.default || excelModule
+
+        const workbook = buildWorkbook(ExcelJS, this.records)
+        const buffer = await workbook.xlsx.writeBuffer()
+        const stamp = new Date().toISOString().slice(0, 10)
+
+        this.saveFile(
+          new Blob([buffer], {
+            type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+          }),
+          `data-bar-participantes-${stamp}.xlsx`
+        )
+      } catch (error) {
+        console.error('Error generando el Excel:', error)
+        alert('No se pudo generar el archivo de Excel. Revisa la consola.')
+      } finally {
+        this.generating = false
+      }
+    },
+
+    escapeCsv(value) {
       const text = value === null || value === undefined ? '' : String(value)
-      if (text.includes('"') || text.includes(delimiter) || /[\n\r]/.test(text)) {
+      if (text.includes('"') || text.includes(';') || /[\n\r]/.test(text)) {
         return `"${text.replace(/"/g, '""')}"`
       }
       return text
     },
 
-    downloadCsv(delimiter) {
-      const header = this.columns
-        .map(([, label]) => this.escapeCsv(label, delimiter))
-        .join(delimiter)
-
+    downloadCsv() {
+      const columns = buildColumns()
+      const header = columns.map(c => this.escapeCsv(c.header)).join(';')
       const body = this.rows.map(row =>
-        this.columns
-          .map(([key]) => this.escapeCsv(row[key], delimiter))
-          .join(delimiter)
+        columns
+          .map(c => {
+            const value = c.get(row)
+            return this.escapeCsv(c.fecha && value ? this.formatDate(value) : value)
+          })
+          .join(';')
       )
 
-      // El BOM es lo que hace que Excel respete acentos y ñ
-      const csv = '﻿' + [header, ...body].join('\r\n')
+      // El BOM es lo que hace que los acentos y la ñ se vean bien
+      const csv = '\uFEFF' + [header, ...body].join('\r\n')
       const stamp = new Date().toISOString().slice(0, 10)
 
-      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' })
-      const url = URL.createObjectURL(blob)
-      const link = document.createElement('a')
-      link.href = url
-      link.download = `data-bar-participantes-${stamp}.csv`
-      document.body.appendChild(link)
-      link.click()
-      document.body.removeChild(link)
-      URL.revokeObjectURL(url)
+      this.saveFile(
+        new Blob([csv], { type: 'text/csv;charset=utf-8;' }),
+        `data-bar-participantes-${stamp}.csv`
+      )
     }
   }
 }
