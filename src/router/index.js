@@ -5,6 +5,7 @@ import Question from "../views/Question.vue";
 import Result from "../views/Result.vue";
 import Thanks from "../views/Thanks.vue";
 import Bartender from "../views/Bartender.vue";
+import Export from "../views/Export.vue";
 
 const routes = [
   {
@@ -43,6 +44,19 @@ const routes = [
     name: "Bartender",
     component: Bartender,
     meta: { transition: "slide-left" },
+  },
+  {
+    path: "/exportar",
+    name: "Export",
+    component: Export,
+    meta: { transition: "slide-left" },
+  },
+  // Cualquier URL que no exista manda al inicio.
+  // Sin esto la app se queda en pantalla blanca, porque Vercel responde
+  // index.html a todo y el router no encuentra qué pintar.
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
   },
 ];
 
